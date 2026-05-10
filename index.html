@@ -89,6 +89,53 @@ body {
   }
 }
 
+
+/* FULL HEIGHT BACKGROUND FIX */
+.stage {
+  overflow: visible !important;
+  background: transparent !important;
+}
+.screen {
+  position: relative !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+.screen.active {
+  display: block !important;
+}
+.screen > .bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100% !important;
+  border-radius: 34px !important;
+  z-index: 0 !important;
+}
+.screen > .bg::before,
+.screen > .bg::after {
+  position: absolute !important;
+}
+.content,
+.top {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.panel {
+  position: relative !important;
+  z-index: 3 !important;
+}
+html,
+body {
+  background: #020617 !important;
+}
+.app {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(191,219,254,.16), transparent 34%),
+    radial-gradient(circle at 10% 95%, rgba(16,185,129,.10), transparent 30%),
+    #020617 !important;
+}
+
 </style></head><body><div class="app"><main class="phone"><div class="progress" id="progress"></div><section class="stage"><div id="mapScreen" class="screen active"></div><div id="levelScreen" class="screen"></div><div id="toast" class="toast"></div></section><div class="footer"><span id="footerLeft">Lov na zaklad</span><span id="footerRight">Postani voda</span></div></main></div><script>const LEVELS=[{"id": "level1", "key": "L1--6ybJ_cttKk", "kind": "timer", "number": "1", "title": "RESET UMA", "quote": "Tvoj um je kot prepoln telefon. Najprej počisti prostor.", "task": "30 sekund stoj v tišini. Opazuj mirno gladino vode. Brez premikanja. Če se zasmejiš ali premakneš, začneš znova.", "after": "Ko si pripravljen, se s kolesom odpelji do druge postaje.", "duration": 30, "button": "Začni 30 sekund", "theme": "reset"}, {"id": "level2", "key": "L2-YYbyLTPweus", "kind": "checktimer", "number": "2", "title": "OPAZOVALNI IZZIV", "quote": "Koliko podrobnosti spregledaš?", "task": "V 1 minuti najdi:", "checks": ["3 različne barve", "2 različna zvoka", "1 premik: žival, list, veter ali avto"], "after": "Nadaljuj pot s kolesom do naslednje postaje.", "duration": 60, "button": "Začni 1 minuto", "theme": "observe"}, {"id": "level3", "key": "L3-LYI58P_eaxs", "kind": "simple", "number": "3", "title": "OVIRA", "quote": "Ko naletiš na blokado – ali eksplodiraš ali razmišljaš?", "task": "Prehod čez oviro. Pogoj: brez pritoževanja. Če kdo reče/rečeš »to je težko«, ponovi nalogo.", "after": "Ko si pripravljen, se s kolesom odpelji do druge postaje.", "theme": "obstacle"}, {"id": "level4", "key": "L4-fCaN7MnPt7Y", "kind": "breath", "number": "4", "title": "MIRNA GLAVA", "quote": "Močni niso tisti, ki kričijo. Močni so tisti, ki obvladajo sebe.", "task": "10 globokih vdihov, roke so na trebuhu. Telefon naj ostane v žepu.", "after": "", "breaths": 10, "theme": "calm"}, {"id": "level5", "key": "L5-Si8Dr_HzR_k", "kind": "simple", "number": "5", "title": "SPUSTI DRAMO", "quote": "Kaj te največkrat vrže iz ravnotežja?", "task": "Vsak si tiho prizna eno stvar. S prstom simbolno napiše v zrak in “izbriše”.", "after": "", "theme": "release"}, {"id": "final", "key": "FINAL-iff-BNjmtx0", "kind": "final", "number": "FINAL", "title": "ZAKLAD", "quote": "Ustavi se pri skrinjici, v kateri se nahajata besedilo in ogledalo.", "task": "Izprazni svoj um. Bodi nedoločen, brez oblike, kakor voda. Zliješ jo v skodelico in voda postane skodelica. Zliješ jo v čajnik in prevzame obliko čajnika. Zliješ jo v steklenico in postane steklenica. Voda lahko teče, lahko pa tudi dere in ruši!\n\nIn še obljubljeni zaklad:\n\nZaklad si ti.", "after": "", "theme": "treasure"}];
 const THEMES={reset:"linear-gradient(to bottom,#020617,#0e7490,#334155)",observe:"linear-gradient(to bottom,#020617,#064e3b,#0f766e)",obstacle:"linear-gradient(to bottom,#020617,#075985,#334155)",calm:"linear-gradient(to bottom,#082f49,#0e7490,#1e3a8a)",release:"linear-gradient(to bottom,#020617,#581c87,#0f766e)",treasure:"linear-gradient(to bottom,#020617,#0f766e,#854d0e)"};
 const STORAGE_KEY="postani_voda_unlocked_v1";let current=null,timerId=null,timerRemaining=0,breathId=null,breathCount=0;
@@ -109,9 +156,4 @@ function resetTimer(d){stopTimer();const el=document.getElementById("timer");if(
 function stopTimer(){if(timerId)clearInterval(timerId);timerId=null;const el=document.getElementById("timer");if(el)el.classList.remove("running")}
 function startBreath(max){stopBreath();breathCount=0;const c=document.getElementById("breathCircle"),n=document.getElementById("breathCount");if(!c||!n)return;c.classList.add("animate");c.textContent="Vdihni";n.textContent="0 / "+max;let phase=0;breathId=setInterval(()=>{phase++;if(phase%2===1)c.textContent="Izdihni";else{breathCount++;n.textContent=breathCount+" / "+max;c.textContent="Vdihni";if(breathCount>=max){stopBreath();c.textContent="✓";toast("Dihanje zaključeno.")}}},3000)}
 function resetBreath(max){stopBreath();const c=document.getElementById("breathCircle"),n=document.getElementById("breathCount");if(c)c.textContent="Vdihni";if(n)n.textContent="0 / "+max}
-function stopBreath(){if(breathId)clearInterval(breathId);breathId=null;const c=document.getElementById("breathCircle");if(c)c.classList.remove("animate")}
-function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}
-function handleHash(){const hash=decodeURIComponent(location.hash.replace(/^#/,""));if(!hash)return renderMap();const l=LEVELS.find(x=>hash===x.key||hash==="unlock-"+x.key);if(l){unlock(l.id);renderLevel(l);return}const d=LEVELS.find(x=>hash===x.id);if(d&&isUnlocked(d.id))renderLevel(d);else renderMap("Ta level še ni odklenjen. Poišči in poskeniraj pravo QR kodo.")}
-document.addEventListener("click",e=>{const b=e.target.closest(".level-btn");if(!b)return;const l=LEVELS.find(x=>x.id===b.dataset.id);if(!l)return;if(isUnlocked(l.id))renderLevel(l);else renderMap("Ta level še ni odklenjen. Poišči in poskeniraj pravo QR kodo.")});
-window.addEventListener("hashchange",handleHash);console.assert(LEVELS.length===6,"There must be 6 levels.");handleHash();
-</script></body></html>
+function stopBreath(){if(breathId)clearInterval(breathId);breathId=null;const c=document.getElementById("b
