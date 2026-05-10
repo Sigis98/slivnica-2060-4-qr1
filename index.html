@@ -50,7 +50,7 @@ h2{margin:14px 0 0;color:rgba(255,255,255,.84);font-size:clamp(17px,4.7vw,20px);
 .check.done .box{background:#22c55e;border-color:#22c55e}
 .check.done .box:after{content:"✓";font-weight:950;color:white}
 .breath-circle{margin:16px auto 0;width:112px;height:112px;border-radius:999px;background:rgba(191,219,254,.18);border:3px solid rgba(191,219,254,.55);display:grid;place-items:center;font-size:18px;font-weight:950;box-shadow:0 0 45px rgba(103,232,249,.25)}
-.breath-circle.animate{animation:breath 6s ease-in-out infinite}
+.breath-circle.animate{animation:breath 10s ease-in-out infinite}
 .breath-count{margin-top:12px;color:#cffafe;font-size:18px;font-weight:900}
 .footer{display:flex;justify-content:space-between;color:rgba(255,255,255,.68);font-size:14px;padding:10px 4px 0}
 .toast{position:fixed;z-index:40;left:22px;right:22px;bottom:22px;background:rgba(15,23,42,.92);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:14px;font-weight:850;text-align:center;display:none}
@@ -90,7 +90,7 @@ function setFooter(l,r){document.getElementById("footerLeft").textContent=l;docu
 function startTimer(d){stopTimer();timerRemaining=d;const el=document.getElementById("timer");if(!el)return;el.classList.add("running");el.textContent=timerRemaining;timerId=setInterval(()=>{timerRemaining--;el.textContent=timerRemaining;if(timerRemaining<=0){stopTimer();el.textContent="✓";toast("Čas je potekel. Izziv je opravljen, če si upošteval navodila.")}},1000)}
 function resetTimer(d){stopTimer();const el=document.getElementById("timer");if(el)el.textContent=d}
 function stopTimer(){if(timerId)clearInterval(timerId);timerId=null;const el=document.getElementById("timer");if(el)el.classList.remove("running")}
-function startBreath(max){stopBreath();breathCount=0;const c=document.getElementById("breathCircle"),n=document.getElementById("breathCount");if(!c||!n)return;c.classList.add("animate");c.textContent="Vdihni";n.textContent="0 / "+max;let phase=0;breathId=setInterval(()=>{phase++;if(phase%2===1)c.textContent="Izdihni";else{breathCount++;n.textContent=breathCount+" / "+max;c.textContent="Vdihni";if(breathCount>=max){stopBreath();c.textContent="✓";toast("Dihanje zaključeno.")}}},3000)}
+function startBreath(max){stopBreath();breathCount=0;const c=document.getElementById("breathCircle"),n=document.getElementById("breathCount");if(!c||!n)return;c.classList.add("animate");c.textContent="Vdihni";n.textContent="0 / "+max;let phase=0;breathId=setInterval(()=>{phase++;if(phase%2===1)c.textContent="Izdihni";else{breathCount++;n.textContent=breathCount+" / "+max;c.textContent="Vdihni";if(breathCount>=max){stopBreath();c.textContent="✓";toast("Dihanje zaključeno.")}}},5000)}
 function resetBreath(max){stopBreath();const c=document.getElementById("breathCircle"),n=document.getElementById("breathCount");if(c)c.textContent="Vdihni";if(n)n.textContent="0 / "+max}
 function stopBreath(){if(breathId)clearInterval(breathId);breathId=null;const c=document.getElementById("breathCircle");if(c)c.classList.remove("animate")}
 function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}
@@ -100,4 +100,4 @@ window.addEventListener("hashchange",handleHash);handleHash();
 
 </script>
 </body>
-</html>
+</html
