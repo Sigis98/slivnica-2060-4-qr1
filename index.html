@@ -1,5 +1,120 @@
 <!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Lov na zaklad: Postani voda</title><style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:#020617;color:white;font-family:Calibri,"Segoe UI",Arial,sans-serif;overflow:hidden}body{min-height:100svh}button{font-family:inherit}.app{min-height:100svh;width:100vw;display:flex;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));background:#020617}.phone{width:min(430px,100%);min-height:calc(100svh - 28px);display:flex;flex-direction:column;gap:12px}.progress{display:flex;gap:7px;padding:5px 3px 0}.progress span{height:6px;flex:1;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}.progress span.done{background:#22c55e}.stage{position:relative;flex:1;min-height:0;border-radius:34px;overflow:hidden;box-shadow:0 24px 90px rgba(0,0,0,.58);isolation:isolate}.screen{position:absolute;inset:0;display:none;overflow:hidden;background:#020617}.screen.active{display:block}.bg{position:absolute;inset:0;background:var(--gradient);overflow:hidden}.bg:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 50% 8%,rgba(255,255,255,.18),transparent 20%),radial-gradient(circle at 22% 84%,rgba(103,232,249,.17),transparent 34%),radial-gradient(circle at 86% 86%,rgba(253,230,138,.14),transparent 30%);filter:blur(18px);animation:glow 7s infinite ease-in-out}.bg:after{content:"";position:absolute;left:50%;bottom:-15%;width:125%;height:45%;transform:translateX(-50%);border-radius:55% 55% 0 0;background:rgba(103,232,249,.10);filter:blur(2px)}.spark{position:absolute;width:4px;height:4px;border-radius:999px;background:rgba(255,255,255,.72);box-shadow:0 0 14px rgba(191,219,254,.8);animation:spark 4s infinite ease-in-out}.top{position:relative;z-index:8;display:flex;justify-content:space-between;gap:10px;padding:26px 22px 0;align-items:center}.pill{border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);padding:10px 13px;font-size:12px;line-height:1;font-weight:900;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.content{position:relative;z-index:6;height:calc(100% - 68px);display:flex;align-items:center;padding:18px 22px 34px}.panel{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(2,6,23,.56);backdrop-filter:blur(14px);border-radius:32px;box-shadow:0 24px 70px rgba(0,0,0,.35);padding:22px;text-align:center}h1{margin:0;font-size:clamp(33px,9.5vw,46px);line-height:.98;letter-spacing:-.055em;font-weight:950}h2{margin:14px 0 0;color:rgba(255,255,255,.84);font-size:20px;line-height:1.2;font-weight:760}.line{width:112px;height:6px;border-radius:999px;background:rgba(191,219,254,.85);margin:20px auto}.body,.task,.quote{margin:0;font-size:clamp(19px,5.2vw,23px);line-height:1.25;font-weight:680;color:rgba(255,255,255,.93)}.quote{font-weight:850;color:#cffafe}.task{margin-top:16px;padding:16px;border-radius:24px;background:rgba(255,255,255,.10);font-weight:820;text-align:left;white-space:pre-line}.after{margin:14px 0 0;color:rgba(255,255,255,.72);font-size:17px;line-height:1.25;font-weight:700}.map-list{display:grid;gap:10px;margin-top:20px}.level-btn{width:100%;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(255,255,255,.08);color:white;padding:14px;text-align:left;font-size:17px;font-weight:900;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer}.level-btn.unlocked{background:rgba(34,197,94,.22);border-color:rgba(34,197,94,.65)}.level-btn small{display:block;margin-top:3px;font-size:12px;color:rgba(255,255,255,.65);letter-spacing:.08em;text-transform:uppercase}.lock-msg{margin-top:14px;min-height:24px;color:#fde68a;font-size:15px;font-weight:800}.visual{height:155px;margin:-8px auto 8px;display:grid;place-items:center}.visual svg{width:100%;height:100%;overflow:visible}.action{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.btn{border:0;border-radius:999px;background:white;color:#082f49;padding:13px 18px;font-size:14px;font-weight:950;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}.btn.secondary{background:rgba(255,255,255,.12);color:white}.timer{margin:16px auto 0;width:118px;height:118px;border-radius:999px;border:8px solid rgba(255,255,255,.16);display:grid;place-items:center;font-size:34px;font-weight:950;color:white}.timer.running{animation:pulse 1s infinite ease-in-out}.checks{display:grid;gap:10px;margin-top:14px}.check{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;background:rgba(255,255,255,.10);font-size:18px;font-weight:800;text-align:left;cursor:pointer}.box{width:28px;height:28px;border-radius:8px;border:2px solid rgba(255,255,255,.55);display:grid;place-items:center;flex:0 0 auto}.check.done .box{background:#22c55e;border-color:#22c55e}.check.done .box:after{content:"✓";font-weight:950;color:white}.breath-circle{margin:16px auto 0;width:150px;height:150px;border-radius:999px;background:rgba(191,219,254,.18);border:3px solid rgba(191,219,254,.55);display:grid;place-items:center;font-size:22px;font-weight:950;box-shadow:0 0 45px rgba(103,232,249,.25)}.breath-circle.animate{animation:breath 6s ease-in-out infinite}.breath-count{margin-top:12px;color:#cffafe;font-size:18px;font-weight:900}.footer{display:flex;justify-content:space-between;color:rgba(255,255,255,.68);font-size:14px;padding:0 4px}.toast{position:absolute;z-index:40;left:22px;right:22px;bottom:22px;background:rgba(15,23,42,.92);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:14px;font-weight:850;text-align:center;display:none}.toast.show{display:block;animation:toast .25s ease both}@keyframes glow{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}@keyframes spark{0%,100%{opacity:.12;transform:translateY(0) scale(.8)}50%{opacity:.85;transform:translateY(-12px) scale(1.2)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}@keyframes breath{0%,100%{transform:scale(.72);opacity:.65}50%{transform:scale(1.05);opacity:1}}@keyframes toast{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@media(max-height:720px){.visual{height:100px}.panel{padding:17px}h1{font-size:30px}.body,.task,.quote{font-size:18px}h2{font-size:18px}.timer{width:92px;height:92px;font-size:27px}.breath-circle{width:112px;height:112px}.level-btn{padding:10px;font-size:15px}}
+
+/* MOBILE FIT FIX */
+.stage {
+  overflow: hidden;
+}
+.screen {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.screen::-webkit-scrollbar {
+  display: none;
+}
+.content {
+  height: auto !important;
+  min-height: calc(100% - 68px);
+  align-items: flex-start !important;
+  padding: 14px 18px 24px !important;
+  overflow: visible;
+}
+.panel {
+  margin-bottom: 18px;
+  padding: 18px !important;
+}
+.visual {
+  position: absolute;
+  inset: auto -28px 8px auto;
+  width: 210px;
+  height: 170px !important;
+  opacity: .16;
+  z-index: -1;
+  pointer-events: none;
+}
+.visual svg {
+  width: 100%;
+  height: 100%;
+}
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+h1 {
+  font-size: clamp(30px, 8.7vw, 42px) !important;
+}
+h2 {
+  font-size: clamp(17px, 4.7vw, 20px) !important;
+}
+.body, .task, .quote {
+  font-size: clamp(17px, 4.8vw, 21px) !important;
+  line-height: 1.25 !important;
+}
+.task {
+  padding: 14px !important;
+}
+.after {
+  font-size: 16px !important;
+}
+.timer {
+  width: 98px !important;
+  height: 98px !important;
+  font-size: 28px !important;
+  border-width: 6px !important;
+}
+.breath-circle {
+  width: 112px !important;
+  height: 112px !important;
+  font-size: 18px !important;
+}
+.check {
+  padding: 10px !important;
+  font-size: 16px !important;
+}
+.level-btn {
+  padding: 11px 12px !important;
+  font-size: 15px !important;
+}
+.action {
+  margin-top: 14px !important;
+}
+.btn {
+  padding: 11px 14px !important;
+  font-size: 12px !important;
+}
+.top {
+  padding: 18px 18px 0 !important;
+}
+.pill {
+  font-size: 11px !important;
+  padding: 9px 11px !important;
+}
+.toast {
+  bottom: 14px !important;
+}
+@media (max-height: 760px) {
+  .content {
+    padding-top: 10px !important;
+    padding-bottom: 18px !important;
+  }
+  .visual {
+    width: 180px;
+    height: 145px !important;
+    opacity: .13;
+  }
+  .line {
+    margin: 14px auto !important;
+  }
+  .map-list {
+    margin-top: 14px !important;
+    gap: 8px !important;
+  }
+  .panel {
+    padding: 16px !important;
+  }
+}
+
 </style></head><body><div class="app"><main class="phone"><div class="progress" id="progress"></div><section class="stage"><div id="mapScreen" class="screen active"></div><div id="levelScreen" class="screen"></div><div id="toast" class="toast"></div></section><div class="footer"><span id="footerLeft">Lov na zaklad</span><span id="footerRight">Postani voda</span></div></main></div><script>const LEVELS=[{"id": "level1", "key": "L1--6ybJ_cttKk", "kind": "timer", "number": "1", "title": "RESET UMA", "quote": "Tvoj um je kot prepoln telefon. Najprej počisti prostor.", "task": "30 sekund stoj v tišini. Opazuj mirno gladino vode. Brez premikanja. Če se zasmejiš ali premakneš, začneš znova.", "after": "Ko si pripravljen, se s kolesom odpelji do druge postaje.", "duration": 30, "button": "Začni 30 sekund", "theme": "reset"}, {"id": "level2", "key": "L2-YYbyLTPweus", "kind": "checktimer", "number": "2", "title": "OPAZOVALNI IZZIV", "quote": "Koliko podrobnosti spregledaš?", "task": "V 1 minuti najdi:", "checks": ["3 različne barve", "2 različna zvoka", "1 premik: žival, list, veter ali avto"], "after": "Nadaljuj pot s kolesom do naslednje postaje.", "duration": 60, "button": "Začni 1 minuto", "theme": "observe"}, {"id": "level3", "key": "L3-LYI58P_eaxs", "kind": "simple", "number": "3", "title": "OVIRA", "quote": "Ko naletiš na blokado – ali eksplodiraš ali razmišljaš?", "task": "Prehod čez oviro. Pogoj: brez pritoževanja. Če kdo reče/rečeš »to je težko«, ponovi nalogo.", "after": "Ko si pripravljen, se s kolesom odpelji do druge postaje.", "theme": "obstacle"}, {"id": "level4", "key": "L4-fCaN7MnPt7Y", "kind": "breath", "number": "4", "title": "MIRNA GLAVA", "quote": "Močni niso tisti, ki kričijo. Močni so tisti, ki obvladajo sebe.", "task": "10 globokih vdihov, roke so na trebuhu. Telefon naj ostane v žepu.", "after": "", "breaths": 10, "theme": "calm"}, {"id": "level5", "key": "L5-Si8Dr_HzR_k", "kind": "simple", "number": "5", "title": "SPUSTI DRAMO", "quote": "Kaj te največkrat vrže iz ravnotežja?", "task": "Vsak si tiho prizna eno stvar. S prstom simbolno napiše v zrak in “izbriše”.", "after": "", "theme": "release"}, {"id": "final", "key": "FINAL-iff-BNjmtx0", "kind": "final", "number": "FINAL", "title": "ZAKLAD", "quote": "Ustavi se pri skrinjici, v kateri se nahajata besedilo in ogledalo.", "task": "Izprazni svoj um. Bodi nedoločen, brez oblike, kakor voda. Zliješ jo v skodelico in voda postane skodelica. Zliješ jo v čajnik in prevzame obliko čajnika. Zliješ jo v steklenico in postane steklenica. Voda lahko teče, lahko pa tudi dere in ruši!\n\nIn še obljubljeni zaklad:\n\nZaklad si ti.", "after": "", "theme": "treasure"}];
 const THEMES={reset:"linear-gradient(to bottom,#020617,#0e7490,#334155)",observe:"linear-gradient(to bottom,#020617,#064e3b,#0f766e)",obstacle:"linear-gradient(to bottom,#020617,#075985,#334155)",calm:"linear-gradient(to bottom,#082f49,#0e7490,#1e3a8a)",release:"linear-gradient(to bottom,#020617,#581c87,#0f766e)",treasure:"linear-gradient(to bottom,#020617,#0f766e,#854d0e)"};
 const STORAGE_KEY="postani_voda_unlocked_v1";let current=null,timerId=null,timerRemaining=0,breathId=null,breathCount=0;
